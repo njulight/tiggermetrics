@@ -1,0 +1,17 @@
+server:
+  port: 26335
+spring:
+  security:
+    user:
+      name: luhost
+      password: Test_12345
+  application:
+    name: registry
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://luhost:Test_12345@${eureka.instance.hostname}:${server.port}/eureka/

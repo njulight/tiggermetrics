@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tiggermetrics.accoutservice.dao.mapper.AccountMapper">
+
+    <resultMap id="BaseResultMap" type="com.tiggermetrics.accoutservice.dao.model.AccountPo">
+        <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="last_seen" jdbcType="DATE" property="lastSeen" />
+        <result column="note" jdbcType="VARCHAR" property="note" />
+    </resultMap>
+
+    <insert id="insert" parameterType="com.tiggermetrics.accoutservice.dao.model.AccountPo">
+        insert into account(uuid,name,last_seen,note)
+        values(#{uuid,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{lastSeen,jdbcType=DATE},#{note,jdbcType=VARCHAR})
+    </insert>
+
+</mapper>

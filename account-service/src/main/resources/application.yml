@@ -1,0 +1,16 @@
+server:
+  port: 26336
+spring:
+  application:
+    name: accout-service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/tiggermetrics?useUnicode=true&characterEncoding=utf-8
+    username: user
+    password: pw
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapperLocations: classpath:mapper/*Mapper.xml
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://luhost:Test_12345@localhost:26335/eureka/
