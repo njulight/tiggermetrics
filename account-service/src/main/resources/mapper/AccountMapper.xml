@@ -14,4 +14,24 @@
         values(#{uuid,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{lastSeen,jdbcType=DATE},#{note,jdbcType=VARCHAR})
     </insert>
 
+    <select id = "selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select uuid,name,last_seen,note from account
+        <where>
+            uuid = #{uuid,jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <update id = "update" parameterType="com.tiggermetrics.accoutservice.dao.model.AccountPo">
+        update account
+        <set>
+            uuid = #{uuid,jdbcType=VARCHAR},
+            name = #{name,jdbcType=VARCHAR},
+            last_seen = #{lastSeen,jdbcType=DATE},
+            note = #{note,jdbcType=VARCHAR}
+        </set>
+        <where>
+            uuid = #{uuid,jdbcType=VARCHAR}
+        </where>
+    </update>
+
 </mapper>

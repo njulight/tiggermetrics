@@ -18,4 +18,18 @@ public class AccountDaoImpl implements AccountDao {
     public void addAccount(Account account) {
         accountMapper.insert(new AccountPo(account));
     }
+
+    @Override
+    public Account queryAccount(String uuid) {
+        AccountPo accountPo = accountMapper.selectByPrimaryKey(uuid);
+        if (accountPo != null) {
+            return accountMapper.selectByPrimaryKey(uuid).toMo();
+        }
+        return null;
+    }
+
+    @Override
+    public void updateAccount(Account account) {
+        accountMapper.update(new AccountPo(account));
+    }
 }

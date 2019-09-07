@@ -28,5 +28,5 @@ public interface AccountService {
 	 *
 	 * @param update
 	 */
-	void saveChanges(Account update);
+	void saveChanges(Account update) throws Exception;
 }

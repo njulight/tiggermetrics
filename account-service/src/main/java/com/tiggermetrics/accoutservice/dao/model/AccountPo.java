@@ -46,6 +46,10 @@ public class AccountPo extends AbsPo<Account>{
 		this.note = note;
 	}
 
+	public AccountPo() {
+
+	}
+
 	public AccountPo(Account account) {
 		this.uuid = account.getUuid();
 		this.name = account.getName();
@@ -54,7 +58,7 @@ public class AccountPo extends AbsPo<Account>{
 	}
 
 	@Override
-	Account toMo() {
+	public Account toMo() {
 		Account account = new Account();
 		account.setUuid(this.uuid);
 		account.setName(this.name);

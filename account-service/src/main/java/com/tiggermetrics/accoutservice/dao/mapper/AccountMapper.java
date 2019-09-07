@@ -8,4 +8,8 @@ public interface AccountMapper {
 
     int insert(AccountPo accountPo);
 
+    AccountPo selectByPrimaryKey(String uuid);
+
+    int update(AccountPo accountPo);
+
 }

@@ -17,7 +17,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account findByUuid(String uuid) {
-        return null;
+        return accountDao.queryAccount(uuid);
     }
 
     @Override
@@ -30,7 +30,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void saveChanges(Account update) {
-
+    public void saveChanges(Account update) throws Exception {
+        Account account = accountDao.queryAccount(update.getUuid());
+        if (account == null) {
+            throw new Exception("account is not exist");
+        }
+        accountDao.updateAccount(update);
     }
 }

@@ -13,13 +13,13 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 
-	@RequestMapping(path = "/{uuid}}", method = RequestMethod.GET)
+	@RequestMapping(path = "/{uuid}", method = RequestMethod.GET)
 	public Account getCurrentAccount(@PathVariable String uuid) {
 		return accountService.findByUuid(uuid);
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.PUT)
-	public void saveCurrentAccount(@Valid @RequestBody Account account) {
+	public void saveCurrentAccount(@Valid @RequestBody Account account) throws Exception {
 		accountService.saveChanges(account);
 	}
 
