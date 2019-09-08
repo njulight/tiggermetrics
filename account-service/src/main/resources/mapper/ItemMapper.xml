@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tiggermetrics.accoutservice.dao.mapper.ItemMapper">
+
+    <resultMap id="BaseResultMap" type="com.tiggermetrics.accoutservice.dao.model.ItemPo">
+        <result column="uuid" jdbcType="VARCHAR" property="uuid"/>
+        <result column="account_id" jdbcType="VARCHAR" property="accountId"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="amount" jdbcType="DECIMAL" property="amount"/>
+        <result column="currency" jdbcType="INTEGER" property="currency"/>
+        <result column="item_time" jdbcType="DATE" property="itemTime"/>
+        <result column="icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="incomes_or_expenses" jdbcType="INTEGER" property="incomesOrExpenses"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.tiggermetrics.accoutservice.dao.model.ItemPo">
+        insert into item (uuid,account_id,title,amount,currency,item_time,icon,incomes_or_expenses)
+        values(#{uuid,jdbcType=VARCHAR},#{accountId,jdbcType=VARCHAR},#{title,jdbcType=VARCHAR},#{amount,jdbcType=DECIMAL},
+        #{currency,jdbcType=INTEGER},#{itemTime,jdbcType=DATE},#{icon,jdbcType=VARCHAR},#{incomesOrExpenses,jdbcType=INTEGER})
+    </insert>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into item (uuid,account_id,title,amount,currency,item_time,icon,incomes_or_expenses)
+        values
+        <foreach item="item" index="index" collection="list" separator=",">
+            (#{item.uuid,jdbcType=VARCHAR},#{item.accountId,jdbcType=VARCHAR},#{item.title,jdbcType=VARCHAR},#{item.amount,jdbcType=DECIMAL},
+            #{item.currency,jdbcType=INTEGER},#{item.itemTime,jdbcType=DATE},#{item.icon,jdbcType=VARCHAR},#{item.incomesOrExpenses,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+
+    <select id="selectByAccountId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select uuid,account_id,title,amount,currency,item_time,icon,incomes_or_expenses from item
+        <where>
+            account_id = #{accountId,jdbcType=VARCHAR}
+        </where>
+    </select>
+</mapper>

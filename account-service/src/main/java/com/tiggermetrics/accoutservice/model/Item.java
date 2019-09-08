@@ -1,6 +1,7 @@
 package com.tiggermetrics.accoutservice.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class Item {
 
@@ -12,9 +13,11 @@ public class Item {
 
 	private Currency currency;
 
-	private TimePeriod period;
+	private Date itemTime;
 
 	private String icon;
+
+	private ItemType itemType;
 
 	public String getUuid() {
 		return uuid;
@@ -48,19 +51,27 @@ public class Item {
 		this.currency = currency;
 	}
 
-	public TimePeriod getPeriod() {
-		return period;
-	}
-
-	public void setPeriod(TimePeriod period) {
-		this.period = period;
-	}
-
 	public String getIcon() {
 		return icon;
 	}
 
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+
+	public Date getItemTime() {
+		return itemTime;
+	}
+
+	public void setItemTime(Date itemTime) {
+		this.itemTime = itemTime;
+	}
+
+	public ItemType getItemType() {
+		return itemType;
+	}
+
+	public void setItemType(ItemType itemType) {
+		this.itemType = itemType;
 	}
 }

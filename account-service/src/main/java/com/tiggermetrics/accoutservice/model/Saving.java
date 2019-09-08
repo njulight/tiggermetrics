@@ -10,8 +10,6 @@ public class Saving {
 
 	private Currency currency;
 
-	private BigDecimal interest;
-
 	public String getUuid() {
 		return uuid;
 	}
@@ -34,13 +32,5 @@ public class Saving {
 
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
-	}
-
-	public BigDecimal getInterest() {
-		return interest;
-	}
-
-	public void setInterest(BigDecimal interest) {
-		this.interest = interest;
 	}
 }

@@ -3,11 +3,8 @@ package com.tiggermetrics.accoutservice.service.impl;
 import com.tiggermetrics.accoutservice.dao.inf.AccountDao;
 import com.tiggermetrics.accoutservice.model.Account;
 import com.tiggermetrics.accoutservice.service.inf.AccountService;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -22,10 +19,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account create(Account account) {
-        if (StringUtils.isEmpty(account.getUuid())) {
-            account.setUuid(UUID.randomUUID().toString());
-        }
-        accountDao.addAccount(account);
+        accountDao.insertAccount(account);
         return account;
     }
 

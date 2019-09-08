@@ -10,7 +10,7 @@
     </resultMap>
 
     <insert id="insert" parameterType="com.tiggermetrics.accoutservice.dao.model.AccountPo">
-        insert into account(uuid,name,last_seen,note)
+        insert into account (uuid,name,last_seen,note)
         values(#{uuid,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{lastSeen,jdbcType=DATE},#{note,jdbcType=VARCHAR})
     </insert>
 

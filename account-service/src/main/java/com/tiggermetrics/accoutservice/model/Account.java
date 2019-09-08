@@ -11,13 +11,13 @@ public class Account {
 
 	private Date lastSeen;
 
+	private String note;
+
 	private List<Item> incomes;
 
 	private List<Item> expenses;
 
 	private Saving saving;
-
-	private String note;
 
 	public String getUuid() {
 		return uuid;

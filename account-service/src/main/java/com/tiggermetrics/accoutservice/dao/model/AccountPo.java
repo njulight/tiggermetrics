@@ -4,7 +4,7 @@ import com.tiggermetrics.accoutservice.model.Account;
 
 import java.util.Date;
 
-public class AccountPo extends AbsPo<Account>{
+public class AccountPo extends AbsPo<Account> {
 
 	private String uuid;
 
