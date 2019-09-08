@@ -41,7 +41,20 @@ public class AccountDaoImpl implements AccountDao {
     public Account queryAccount(String uuid) {
         AccountPo accountPo = accountMapper.selectByPrimaryKey(uuid);
         if (accountPo != null) {
-            return accountMapper.selectByPrimaryKey(uuid).toMo();
+            Account account = accountMapper.selectByPrimaryKey(uuid).toMo();
+            List<Item> items = itemDao.queryByAccountId(accountPo.getUuid());
+            Map<ItemType, List<Item>> itemTypeListMap = items.stream().collect(Collectors.groupingBy(item -> item.getItemType()));
+            if (itemTypeListMap.get(ItemType.INCOMES) != null) {
+                account.setIncomes(itemTypeListMap.get(ItemType.INCOMES));
+            }
+            if (itemTypeListMap.get(ItemType.EXPENSES) != null) {
+                account.setExpenses(itemTypeListMap.get(ItemType.EXPENSES));
+            }
+            List<Saving> savings = savingDao.queryByAccountId(accountPo.getUuid());
+            if (!CollectionUtils.isEmpty(savings)) {
+                account.setSaving(savings);
+            }
+            return account;
         }
         return null;
     }

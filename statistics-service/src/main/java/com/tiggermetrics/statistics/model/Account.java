@@ -1,4 +1,4 @@
-package com.tiggermetrics.accoutservice.model;
+package com.tiggermetrics.statistics.model;
 
 import java.util.Date;
 import java.util.List;
