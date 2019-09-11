@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://luhost:Test_12345@localhost:26335/eureka/

@@ -3,7 +3,18 @@ server:
 spring:
   application:
     name: statistics-service
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://luhost:Test_12345@localhost:26335/eureka/
+  cloud:
+    config:
+      name: rate
+      profile: config
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    host:
+    port:
+    username:
+    password:
+management:
+  security:
+    enabled: false

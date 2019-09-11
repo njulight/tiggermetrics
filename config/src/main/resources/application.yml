@@ -1,0 +1,25 @@
+server:
+  port: 26338
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/tigerconfig/tiggermetricsconfig
+          search-paths: config-repo
+          username:
+          password:
+  rabbitmq:
+    host:
+    port:
+    username:
+    password:
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://luhost:Test_12345@localhost:26335/eureka/
+management:
+  security:
+    enabled: false
