@@ -1,9 +1,14 @@
 spring:
   cloud:
     config:
+      name: rate
+      profile: config
       discovery:
         enabled: true
         serviceId: config
+    bus:
+      trace:
+        enabled: true
 eureka:
   client:
     serviceUrl:
