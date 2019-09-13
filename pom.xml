@@ -13,5 +13,6 @@
         <module>account-service</module>
         <module>config</module>
         <module>statistics-service</module>
+        <module>gateway</module>
     </modules>
 </project>
