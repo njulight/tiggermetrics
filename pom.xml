@@ -14,5 +14,6 @@
         <module>config</module>
         <module>statistics-service</module>
         <module>gateway</module>
+        <module>zipkin</module>
     </modules>
 </project>
