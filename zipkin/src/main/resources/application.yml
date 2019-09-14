@@ -1,0 +1,19 @@
+server:
+  port: 26340
+spring:
+  application:
+    name: zipkin
+  main:
+    allow-bean-definition-overriding: true
+  # 配置mysql
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/tiggermetrics?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+    username: user
+    password: pwd
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://luhost:Test_12345@localhost:26335/eureka/
+zipkin:
+  storage:
+    type: mysql
