@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: statistics-service
+  zipkin:
+    base-url: http://localhost:26340
+    sleuth:
+      sampler:
+        percentage: 1.0
   rabbitmq:
     host: 127.0.0.1
     port: 5672

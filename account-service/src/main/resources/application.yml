@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: accout-service
+  zipkin:
+    base-url: http://localhost:26340
+    sleuth:
+      sampler:
+        percentage: 1.0
 
 mybatis:
   mapperLocations: classpath:mapper/*Mapper.xml

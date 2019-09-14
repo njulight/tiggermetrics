@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: config
+  zipkin:
+    base-url: http://localhost:26340
+    sleuth:
+      sampler:
+        percentage: 1.0
   cloud:
     config:
       server:
