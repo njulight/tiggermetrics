@@ -9,8 +9,9 @@ import java.math.BigDecimal;
 import java.util.Collections;
 
 @Component
-public class AccountClientFallback {
+public class AccountClientFallback implements AccountClient {
 
+    @Override
     public Account getCurrentAccount(String uuid) {
         Account account = new Account();
         account.setUuid(uuid);

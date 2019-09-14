@@ -14,10 +14,13 @@ spring:
     username: user
     password: pwd
     virtual-host: /
+feign:
+  hystrix:
+    enabled: true
 management:
   security:
     enabled: false
   endpoints:
     web:
       exposure:
-        include: bus-refresh
+        include: bus-refresh,hystrix.stream
