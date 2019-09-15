@@ -1,0 +1,8 @@
+version: '3'
+services:
+
+  config:
+    image: tiggermetrics/config
+    ports:
+      - 26338:26338
+    restart: always

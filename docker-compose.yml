@@ -1,47 +1,24 @@
 version: '3'
 services:
 
-  registry:
-    image: tiggermetrics/registry
-    ports:
-      - 26335:26335
-    restart: always
-
-  zipkin:
-    image: tiggermetrics/zipkin
-    ports:
-      - 26340:26340
-    restart: always
-
-  config:
-    image: tiggermetrics/config
-    ports:
-      - 26338:26338
-    restart: always
-
   account:
     image: tiggermetrics/account-service
     ports:
       - 26336:26336
     restart: always
-    depends_on:
-      - config
 
   statistics:
     image: tiggermetrics/statistics-service
     ports:
       - 26337:26337
     restart: always
-    depends_on:
-      - config
 
   turbine:
     image: tiggermetrics/turbine
     ports:
       - 26341:26341
     restart: always
-    depends_on:
-      - statistics
+
   gateway:
     image: tiggermetrics/gateway
     ports:

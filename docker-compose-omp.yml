@@ -1,0 +1,14 @@
+version: '3'
+services:
+
+  registry:
+    image: tiggermetrics/registry
+    ports:
+      - 26335:26335
+    restart: always
+
+  zipkin:
+    image: tiggermetrics/zipkin
+    ports:
+      - 9411:9411
+    restart: always
