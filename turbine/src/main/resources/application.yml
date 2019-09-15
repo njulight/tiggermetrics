@@ -1,0 +1,19 @@
+server:
+  port: 26341
+spring:
+  application:
+    name: turbine
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://luhost:Test_12345@localhost:26335/eureka/
+turbine:
+  app-config: statistics-service
+  cluster-name-expression: new String("default")
+  combine-host-port: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
