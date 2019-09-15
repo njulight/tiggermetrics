@@ -17,3 +17,8 @@ eureka:
 zipkin:
   storage:
     type: mysql
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
