@@ -21,6 +21,10 @@
         </where>
     </select>
 
+    <select id = "selectAll" resultMap="BaseResultMap">
+        select uuid,name,last_seen,note from account
+    </select>
+
     <update id = "update" parameterType="com.tiggermetrics.accoutservice.dao.model.AccountPo">
         update account
         <set>

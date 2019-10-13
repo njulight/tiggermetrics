@@ -6,6 +6,8 @@ import com.tiggermetrics.accoutservice.service.inf.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AccountServiceImpl implements AccountService {
 
@@ -15,6 +17,11 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account findByUuid(String uuid) {
         return accountDao.queryAccount(uuid);
+    }
+
+    @Override
+    public List<Account> queryAccouts() {
+        return accountDao.queryAllAccounts();
     }
 
     @Override

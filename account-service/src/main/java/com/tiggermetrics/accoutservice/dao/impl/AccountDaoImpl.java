@@ -41,7 +41,7 @@ public class AccountDaoImpl implements AccountDao {
     public Account queryAccount(String uuid) {
         AccountPo accountPo = accountMapper.selectByPrimaryKey(uuid);
         if (accountPo != null) {
-            Account account = accountMapper.selectByPrimaryKey(uuid).toMo();
+            Account account = accountPo.toMo();
             List<Item> items = itemDao.queryByAccountId(accountPo.getUuid());
             Map<ItemType, List<Item>> itemTypeListMap = items.stream().collect(Collectors.groupingBy(item -> item.getItemType()));
             if (itemTypeListMap.get(ItemType.INCOMES) != null) {
@@ -57,6 +57,12 @@ public class AccountDaoImpl implements AccountDao {
             return account;
         }
         return null;
+    }
+
+    @Override
+    public List<Account> queryAllAccounts() {
+        List<AccountPo> accountPos = accountMapper.selectAll();
+        return accountPos.stream().map(item -> item.toMo()).collect(Collectors.toList());
     }
 
     @Override

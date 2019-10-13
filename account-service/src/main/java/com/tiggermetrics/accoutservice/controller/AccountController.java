@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class AccountController {
@@ -16,6 +17,11 @@ public class AccountController {
 	@RequestMapping(path = "/{uuid}", method = RequestMethod.GET)
 	public Account getCurrentAccount(@PathVariable String uuid) {
 		return accountService.findByUuid(uuid);
+	}
+
+	@RequestMapping(path = "/", method = RequestMethod.GET)
+	public List<Account> getAllAccount() {
+		return accountService.queryAccouts();
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.PUT)

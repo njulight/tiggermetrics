@@ -2,6 +2,8 @@ package com.tiggermetrics.accoutservice.service.inf;
 
 import com.tiggermetrics.accoutservice.model.Account;
 
+import java.util.List;
+
 public interface AccountService {
 
 	/**
@@ -11,6 +13,8 @@ public interface AccountService {
 	 * @return found account
 	 */
 	Account findByUuid(String uuid);
+
+	List<Account> queryAccouts();
 
 	/**
 	 * Checks if account with the same name already exists
