@@ -1,28 +1,29 @@
 <template>
 	<div>
-		<van-nav-bar title="账户详情" left-text="返回" left-arrow @click-left="onClickLeft" />
-		<van-cell-group title="基本信息">
-			<van-cell title="账户名" :value="account.name" />
-			<van-cell title="备注" :value="account.note" />
+		<van-nav-bar title="账户详情" left-text="返回" right-text="编辑" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
+		<van-nav-bar title="基本信息" />
+		<van-cell title="账户名" :value="account.name" />
+		<van-cell title="备注" :value="account.note" />
+		<van-nav-bar title="收入" @click-right="onIncomeClickRight">
+			<van-icon name="add-o" slot="right" />
+		</van-nav-bar>
+		<van-cell-group v-for="item in incomeList" :key="item" :title="item.title" :icon="item.icon">
+			<van-cell title="金额" :value="item.amount+ ' ' +item.currency" />
+			<van-cell title="时间" :value="item.itemTime" />
 		</van-cell-group>
-		<van-cell-group title="收入">
-			<van-cell-group v-for="item in incomeList" :key="item" :title="item.title" :icon="item.icon">
-				<van-cell title="金额" :value="item.amount+ ' ' +item.currency" />
-				<van-cell title="时间" :value="item.itemTime" />
-			</van-cell-group>
+
+		<van-nav-bar title="支出" @click-right="onExpenseClickRight">
+			<van-icon name="add-o" slot="right" />
+		</van-nav-bar>
+		<van-cell-group v-for="item in expenseList" :key="item" :title="item.title" :icon="item.icon">
+			<van-cell title="金额" :value="item.amount+ ' ' +item.currency" />
+			<van-cell title="时间" :value="item.itemTime" />
 		</van-cell-group>
-		<van-cell-group title="支出">
-			<van-cell-group v-for="item in expenseList" :key="item" :title="item.title" :icon="item.icon">
-				<van-cell title="金额" :value="item.amount+ ' ' +item.currency" />
-				<van-cell title="时间" :value="item.itemTime" />
-			</van-cell-group>
+		<van-nav-bar title="结余" />
+		<van-cell-group v-for="item in savingList" :key="item" :title="item.title">
+			<van-cell title="金额" :value="item.amount+ ' ' +item.currency" />
 		</van-cell-group>
-		<van-cell-group title="结余">
-			<van-cell-group v-for="item in savingList" :key="item" :title="item.title">
-				<van-cell title="金额" :value="item.amount+ ' ' +item.currency" />
-			</van-cell-group>
-			<van-cell title="总计" :value="account.amount+ ' ' +account.currency" />
-		</van-cell-group>
+		<van-cell title="总计" :value="account.amount+ ' ' +account.currency" />
 	</div>
 </template>
 
@@ -45,6 +46,11 @@
 			};
 		},
 		mounted: function() {
+			if (this.$route.params.id == null) {
+				this.$router.push({
+					name: 'Account'
+				})
+			}
 			var uuid = this.$route.params.id;
 			this.queryAccountDetail(uuid);
 			this.queryAccountStat(uuid);
@@ -53,6 +59,36 @@
 			onClickLeft() {
 				this.$router.push({
 					name: 'Account'
+				})
+			},
+			onClickRight() {
+				this.$router.push({
+					name: 'EditAccount',
+					params: {
+						id: this.$route.params.id,
+						name: this.account.name,
+						note: this.account.note
+					}
+				})
+			},
+			onIncomeClickRight() {
+				this.$router.push({
+					name: 'AddIncome',
+					params: {
+						id: this.$route.params.id,
+						name: this.account.name,
+						note: this.account.note
+					}
+				})
+			},
+			onExpenseClickRight() {
+				this.$router.push({
+					name: 'AddExpense',
+					params: {
+						id: this.$route.params.id,
+						name: this.account.name,
+						note: this.account.note
+					}
 				})
 			},
 			queryAccountDetail: function(uuid) {

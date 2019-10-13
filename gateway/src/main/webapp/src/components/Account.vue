@@ -1,8 +1,16 @@
 <template>
 	<div id="app">
+		<van-nav-bar title="账户" @click-right="onClickRight">
+			<van-icon name="add-o" slot="right" />
+		</van-nav-bar>
 		<img alt="Vue logo" src="../assets/logo.png">
 		<van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-			<van-cell is-link v-for="item in list" :key="item" :title="item.name" v-on:click="showDetail(item.uuid)" />
+			<van-swipe-cell :on-close="onClose" v-for="item in list" :key="item">
+				<van-cell :border="false" is-link :title="item.name" v-on:click="showDetail(item.uuid)" />
+				<template slot="right">
+					<van-button square type="danger" text="删除" />
+				</template>
+			</van-swipe-cell>
 		</van-list>
 	</div>
 </template>
@@ -11,13 +19,15 @@
 	import Axios from 'axios';
 	import Vue from 'vue';
 	import {
-		List
+		NavBar,
+		Icon,
+		List,
+		SwipeCell,
+		Cell,
+		Dialog,
+		Button
 	} from 'vant';
-	import {
-		Cell
-	} from 'vant';
-	Vue.use(List);
-	Vue.use(Cell);
+	Vue.use(NavBar).use(Icon).use(List).use(SwipeCell).use(Cell).use(Dialog).use(Button);
 	Vue.prototype.$axios = Axios
 
 	export default {
@@ -31,6 +41,22 @@
 		},
 
 		methods: {
+			onClose(clickPosition, instance) {
+				switch (clickPosition) {
+					case 'left':
+					case 'cell':
+					case 'outside':
+						instance.close();
+						break;
+					case 'right':
+						Dialog.confirm({
+							message: '确定删除吗？'
+						}).then(() => {
+							instance.close();
+						});
+						break;
+				}
+			},
 			onLoad() {
 				this.$axios.get('/accout-service')
 					.then(response => {
@@ -42,6 +68,11 @@
 					}).catch(error => {
 						alert(error);
 					});
+			},
+			onClickRight() {
+				this.$router.push({
+					name: 'AddAccount'
+				})
 			},
 			showDetail: function(message) {
 				this.$router.push({
@@ -81,6 +112,5 @@
 		-moz-osx-font-smoothing: grayscale;
 		text-align: center;
 		color: #2c3e50;
-		margin-top: 60px;
 	}
 </style>
