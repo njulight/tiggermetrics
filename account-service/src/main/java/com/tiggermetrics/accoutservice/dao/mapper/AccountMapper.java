@@ -10,6 +10,8 @@ public interface AccountMapper {
 
     int insert(AccountPo accountPo);
 
+    int delete(String uuid);
+
     AccountPo selectByPrimaryKey(String uuid);
 
     List<AccountPo> selectAll();

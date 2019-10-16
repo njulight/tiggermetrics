@@ -10,4 +10,6 @@ public interface ItemDao {
     void insertItem(List<Item> items, String accountId, ItemType itemType);
 
     List<Item> queryByAccountId(String accountId);
+
+    void deleteByAccountId(String accountId);
 }

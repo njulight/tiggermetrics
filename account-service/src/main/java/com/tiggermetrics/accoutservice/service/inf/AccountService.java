@@ -14,6 +14,8 @@ public interface AccountService {
 	 */
 	Account findByUuid(String uuid);
 
+	void deleteAccount(String uuid);
+
 	List<Account> queryAccouts();
 
 	/**

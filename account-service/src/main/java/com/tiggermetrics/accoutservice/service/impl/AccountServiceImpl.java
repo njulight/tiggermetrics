@@ -20,6 +20,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public void deleteAccount(String uuid) {
+
+    }
+
+    @Override
     public List<Account> queryAccouts() {
         return accountDao.queryAllAccounts();
     }

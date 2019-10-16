@@ -39,4 +39,9 @@ public class ItemDaoImpl implements ItemDao {
         List<ItemPo> itemPos = itemMapper.selectByAccountId(accountId);
         return itemPos.stream().map(item -> item.toMo()).collect(Collectors.toList());
     }
+
+    @Override
+    public void deleteByAccountId(String accountId) {
+        itemMapper.deleteByAccountId(accountId);
+    }
 }

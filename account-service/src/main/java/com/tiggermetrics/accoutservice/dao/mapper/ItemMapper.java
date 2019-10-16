@@ -14,4 +14,6 @@ public interface ItemMapper {
 
     List<ItemPo> selectByAccountId(String accountId);
 
+    int deleteByAccountId(String accountId);
+
 }

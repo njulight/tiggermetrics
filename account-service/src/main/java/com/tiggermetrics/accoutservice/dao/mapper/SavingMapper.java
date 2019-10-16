@@ -18,4 +18,6 @@ public interface SavingMapper {
 
     List<SavingPo> selectByAccountId(String accountId);
 
+    int deleteByAccountId(String accountId);
+
 }

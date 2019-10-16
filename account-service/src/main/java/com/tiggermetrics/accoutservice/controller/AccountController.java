@@ -19,6 +19,11 @@ public class AccountController {
 		return accountService.findByUuid(uuid);
 	}
 
+	@RequestMapping(path = "/{uuid}", method = RequestMethod.DELETE)
+	public Account deleteAccount(@PathVariable String uuid) {
+		return accountService.findByUuid(uuid);
+	}
+
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public List<Account> getAllAccount() {
 		return accountService.queryAccouts();

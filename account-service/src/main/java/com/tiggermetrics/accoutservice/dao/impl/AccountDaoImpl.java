@@ -38,6 +38,13 @@ public class AccountDaoImpl implements AccountDao {
     }
 
     @Override
+    public void deleteAccount(String uuid) {
+        itemDao.deleteByAccountId(uuid);
+        savingDao.deleteByAccountId(uuid);
+        accountMapper.delete(uuid);
+    }
+
+    @Override
     public Account queryAccount(String uuid) {
         AccountPo accountPo = accountMapper.selectByPrimaryKey(uuid);
         if (accountPo != null) {

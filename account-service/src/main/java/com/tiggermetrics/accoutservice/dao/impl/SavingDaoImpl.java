@@ -39,12 +39,19 @@ public class SavingDaoImpl implements SavingDao {
             return;
         }
         List<SavingPo> savingPos = savings.stream().map(item -> new SavingPo(item, accountId)).collect(Collectors.toList());
-        savingMapper.batchUpdate(savingPos);
+        for (SavingPo savingPo : savingPos) {
+            savingMapper.update(savingPo);
+        }
     }
 
     @Override
     public List<Saving> queryByAccountId(String accountId) {
         List<SavingPo> savingPos = savingMapper.selectByAccountId(accountId);
         return savingPos.stream().map(item -> item.toMo()).collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteByAccountId(String accountId) {
+        savingMapper.deleteByAccountId(accountId);
     }
 }

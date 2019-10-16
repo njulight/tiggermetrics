@@ -56,4 +56,12 @@
             </where>
         </foreach>
     </update>
+
+    <delete id = "deleteByAccountId" parameterType="java.lang.String">
+        delete from saving
+        <where>
+            account_id = #{accountId,jdbcType=VARCHAR}
+        </where>
+    </delete>
+
 </mapper>

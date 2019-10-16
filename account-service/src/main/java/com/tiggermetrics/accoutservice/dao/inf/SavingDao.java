@@ -11,4 +11,6 @@ public interface SavingDao {
     void updateSaving(List<Saving> savings, String accountId);
 
     List<Saving> queryByAccountId(String accountId);
+
+    void deleteByAccountId(String accountId);
 }

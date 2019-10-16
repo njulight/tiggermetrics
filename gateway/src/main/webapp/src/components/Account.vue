@@ -52,6 +52,10 @@
 						Dialog.confirm({
 							message: '确定删除吗？'
 						}).then(() => {
+							this.$axios.delete('/accout-service/' + instance.$key.uuid)
+								.then().catch(error => {
+									alert(error);
+								});
 							instance.close();
 						});
 						break;

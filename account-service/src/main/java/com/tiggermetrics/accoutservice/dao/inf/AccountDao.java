@@ -8,6 +8,8 @@ public interface AccountDao {
 
     void insertAccount(Account account);
 
+    void deleteAccount(String uuid);
+
     Account queryAccount(String uuid);
 
     List<Account> queryAllAccounts();

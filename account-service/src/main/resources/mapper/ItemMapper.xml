@@ -34,4 +34,11 @@
             account_id = #{accountId,jdbcType=VARCHAR}
         </where>
     </select>
+
+    <delete id = "deleteByAccountId" parameterType="java.lang.String">
+        delete from item
+        <where>
+            account_id = #{accountId,jdbcType=VARCHAR}
+        </where>
+    </delete>
 </mapper>
