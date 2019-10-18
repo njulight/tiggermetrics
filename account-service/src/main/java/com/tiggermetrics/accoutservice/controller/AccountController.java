@@ -20,8 +20,8 @@ public class AccountController {
 	}
 
 	@RequestMapping(path = "/{uuid}", method = RequestMethod.DELETE)
-	public Account deleteAccount(@PathVariable String uuid) {
-		return accountService.findByUuid(uuid);
+	public void deleteAccount(@PathVariable String uuid) {
+		accountService.deleteAccount(uuid);
 	}
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)

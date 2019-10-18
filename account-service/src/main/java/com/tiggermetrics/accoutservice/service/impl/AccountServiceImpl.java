@@ -21,7 +21,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void deleteAccount(String uuid) {
-
+        accountDao.deleteAccount(uuid);
     }
 
     @Override

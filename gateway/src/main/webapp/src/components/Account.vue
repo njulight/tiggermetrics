@@ -8,7 +8,7 @@
 			<van-swipe-cell :on-close="onClose" v-for="item in list" :key="item">
 				<van-cell :border="false" is-link :title="item.name" v-on:click="showDetail(item.uuid)" />
 				<template slot="right">
-					<van-button square type="danger" text="删除" />
+					<van-button square type="danger" text="删除" @click="deleteAccout(item.uuid, list.indexOf(item))"/>
 				</template>
 			</van-swipe-cell>
 		</van-list>
@@ -49,15 +49,6 @@
 						instance.close();
 						break;
 					case 'right':
-						Dialog.confirm({
-							message: '确定删除吗？'
-						}).then(() => {
-							this.$axios.delete('/accout-service/' + instance.$key.uuid)
-								.then().catch(error => {
-									alert(error);
-								});
-							instance.close();
-						});
 						break;
 				}
 			},
@@ -85,6 +76,18 @@
 						id: message
 					}
 				})
+			},
+			deleteAccout: function(message, key) {
+				Dialog.confirm({
+					message: '确定删除吗？'
+				}).then(() => {					
+					this.$axios.delete('/accout-service/' + message)
+						.then(() => {
+							this.list.splice(key, 1)
+						}).catch(error => {
+							alert(error);
+						});
+				});
 			}
 		}
 	}
