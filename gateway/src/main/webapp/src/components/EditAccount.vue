@@ -32,6 +32,7 @@
 				this.$router.push({
 					name: 'Account'
 				})
+				return;
 			}
 			this.name = this.$route.params.name;
 			this.note = this.$route.params.note;

@@ -50,6 +50,7 @@
 				this.$router.push({
 					name: 'Account'
 				})
+				return;
 			}
 			var uuid = this.$route.params.id;
 			this.queryAccountDetail(uuid);

@@ -52,11 +52,11 @@
 			};
 		},
 		mounted: function() {
-			/*if (this.$route.params.id == null || this.$route.params.name == null) {
+			if (this.$route.params.id == null || this.$route.params.name == null) {
 				this.$router.push({
 					name: 'Account'
 				})
-			}*/
+			}
 		},
 		methods: {
 			onCurrencyConfirm(value) {
