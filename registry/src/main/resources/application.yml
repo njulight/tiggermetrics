@@ -10,6 +10,9 @@ spring:
 eureka:
   instance:
     hostname: localhost
+  server:
+    # 测试时关闭自我保护机制，保证不可用服务及时踢出
+    enable-self-preservation: false
   client:
     registerWithEureka: false
     fetchRegistry: false
